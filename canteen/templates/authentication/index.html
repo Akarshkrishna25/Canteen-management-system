@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100%;
+    background: linear-gradient(to top,rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%),url(https://source.unsplash.com/random/1920x1080/?food);
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+    
+}
+.navbar{
+
+    width: 1200px;
+    height: 750px;
+    margin:30px;
+}
+.icon{
+    width: 200px;
+    height: 70px;
+    float: left;
+}
+.logo{
+color: yellow;
+font-size: x-large;
+font-family:Papyrus, fantasy;
+padding-left: 20px;
+float: left;
+padding-top: 10px;
+
+
+}
+.form{
+    width: 300px;
+    height: 250px;
+    background: linear-gradient(to top, rgba(100, 100, 100, 1), 50%,rgba(100, 100, 100, 1), 50%);
+    position: absolute;
+    top: 50px;
+    left: 1000px;
+    border-radius: 10px;
+    padding: 25px;
+    
+}
+
+ 
+
+.form input{
+    width: 300px;
+    height: 35px;
+    background: opaque;
+    border-bottom: 1px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.logo h4{
+    font-size: larger;
+    width:900px;
+} 
+.btn{
+    display: block;
+    width: 100%;
+    background-color: rgb(235, 233, 240);
+    padding: 0.75rem;
+    text-align: center;
+    color: rgba(17, 24, 39, 1);
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+}
+.form h1{
+    display: block;
+    width: 250px;
+    height: 10px;
+    background-color:rgba(0, 0, 0, 1)
+    padding: 30px;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+}
+.form h2{
+    color: antiquewhite;
+}
+    
+</style>
+<body>
+    
+    <body>
+        
+        <div class="main">
+            <div class="navbar">
+                <div class="icon">
+                    <div class="logo">
+                        <h1>HOME PAGE</h1><br>
+                        <h4>Explore a wide variety of dishes to suit every taste bud and dietary preference.</h4>
+
+                    </div>
+                    <div class="form">
+                        <form method="post" action='/index' class="mb-2">
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username" Required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass1">Password</label>
+                                <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
+                            </div>
+                    
+                            <button type="submit" class="btn btn-primary">Log In</button>
+                        
+                    
+
+                          <p class="link"><h2>Don't have account</h2></p><br>
+                          <button type="submit"><a href="/signup">Signup</a></button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div></div>
+    </body>
+</body>
+</html>

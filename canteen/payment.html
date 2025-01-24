@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAMPUS KITCHEN</title>
+  <style>
+    /* Reset default margin and padding */
+    body, h1, p {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Content area styles */
+    .content {
+      padding: 20px;
+    }
+
+    /* Main container styles */
+    .container {
+      margin: 0 auto;
+      max-width: 800px; /* Adjust as needed */
+    }
+
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: black;
+    }
+
+    td:not(:last-child) {
+      padding-right: 10px;
+    }
+
+    /* Payment details sections */
+    .payment-details {
+      display: none; /* Hide by default */
+      margin-top: 20px;
+    }
+
+    .payment-details.show {
+      display: block; /* Show when necessary */
+    }
+
+    /* Place order button */
+    #place-order-btn {
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #place-order-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CAMPUS KITCHEN</h1>
+  </header>
+
+  <div class="content container">
+    <h2>Choose Mode of Payment:</h2>
+    <input type="radio" id="cod" name="payment" value="cod">
+    <label for="cod">Cash on Delivery</label><br>
+    <input type="radio" id="debit" name="payment" value="debit">
+    <label for="debit">Debit Card</label><br>
+    <input type="radio" id="credit" name="payment" value="credit">
+    <label for="credit">Credit Card</label><br>
+    <input type="radio" id="upi" name="payment" value="upi">
+    <label for="upi">UPI</label><br>
+
+    <!-- Credit card details section -->
+    <div id="credit-card-details" class="payment-details">
+      <h2>Enter Credit Card Details:</h2>
+      <label for="card-number">Card Number:</label>
+      <input type="text" id="card-number" name="card-number"><br>
+      <label for="expiry-date">Expiry Date:</label>
+      <input type="text" id="expiry-date" name="expiry-date"><br>
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv"><br>
+    </div>
+
+    <!-- Debit card details section -->
+    <div id="debit-card-details" class="payment-details">
+      <h2>Enter Debit Card Details:</h2>
+      <label for="debit-card-number">Card Number:</label>
+      <input type="text" id="debit-card-number" name="debit-card-number"><br>
+      <label for="debit-expiry-date">Expiry Date:</label>
+      <input type="text" id="debit-expiry-date" name="debit-expiry-date"><br>
+      <label for="debit-cvv">CVV:</label>
+      <input type="text" id="debit-cvv" name="debit-cvv"><br>
+    </div>
+
+    <!-- UPI details section -->
+    <div id="upi-details" class="payment-details">
+      <h2>Enter UPI Details:</h2>
+      <label for="upi-id">UPI ID:</label>
+      <input type="text" id="upi-id" name="upi-id"><br>
+    </div>
+
+    <h2>Added Orders:</h2>
+    <table>
+      <tr>
+        <th>SLNO</th>
+        <th>FOOD NAME</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Biryani</td>
+        <td>$10</td>
+        <td>
+          <button onclick="decrease(this)">-</button>
+          <span id="quantity">1</span>
+          <button onclick="increase(this)">+</button>
+        </td>
+      </tr>
+      <!-- Add more orders here -->
+    </table>
+
+    <!-- Place order button -->
+    <button id="place-order-btn" onclick="placeOrder()">Place Order</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var paymentRadios = document.querySelectorAll('input[name="payment"]');
+      var paymentDetails = document.querySelectorAll('.payment-details');
+
+      paymentRadios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          paymentDetails.forEach(function(detail) {
+            detail.classList.remove('show');
+          });
+
+          var selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+          var selectedPaymentDetails = document.getElementById(selectedPayment + '-details');
+          if(selectedPaymentDetails) {
+            selectedPaymentDetails.classList.add('show');
+          }
+        });
+      });
+    });
+
+    function increase(element) {
+      var quantityElement = element.parentNode.querySelector("#quantity");
+      var quantity = parseInt(quantityElement.textContent);
+      quantity += 1;
+      quantityElement.textContent = quantity;
+    }
+
+    function decrease(element) {
+      var quantityElement = element.parentNode.querySelector("#quantity");
+      var quantity = parseInt(quantityElement.textContent);
+      if (quantity > 1) {
+        quantity -= 1;
+        quantityElement.textContent = quantity;
+      }
+    }
+
+    function placeOrder() {
+      // Implement place order functionality here
+      alert('Your order has been placed!');
+    }
+  </script>
+</body>
+</html>

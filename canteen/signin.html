@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+   
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("https://source.unsplash.com/random/1920x1080/?food");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: #f7f7f7;
+    }
+    
+    .top-bar {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    .top-bar h1 {
+      margin: 0;
+    }
+    
+    .top-bar button {
+      background-color: #555;
+      color: white;
+      padding: 10px 50px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .top-bar button:hover {
+      background-color: #777;
+    }
+    
+    .top-bar button.active {
+      background-color: #777;
+    }
+    
+   
+ 
+.table-container {
+  margin: 20px auto;
+  width: 80%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background-color: rgba(242, 242, 242, 0.9);}
+
+th {
+  color: black;
+}
+
+td:not(:last-child) {
+  padding-right: 10px; }
+    
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <h1>Campus Kitchen</h1>
+    <button>Home</button>
+    <button class="active">Menu</button>
+    <button>Cart</button>
+    <button>Logout</button>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>SLNO</th>
+        <th>FOOD NAME</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+        <th>ADD TO CART</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>biriyanu</td>
+        <td>70 rs</td>
+        <td>
+          <button onclick="decrease(this)">-</button>
+          <span id="quantity">1</span>
+          <button onclick="increase(this)">+</button>
+        </td>
+        <td><button>Add</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Burger</td>
+        <td>40 rs</td>
+       <td>
+          <button onclick="decrease(this)">-</button>
+          <span id="quantity">1</span>
+          <button onclick="increase(this)">+</button>
+        </td>
+
+
+        <td><button>Add</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>lime juice</td>
+        <td>10 rs</td>
+     <td>
+          <button onclick="decrease(this)">-</button>
+          <span id="quantity">1</span>
+          <button onclick="increase(this)">+</button>
+        </td>
+
+       
+        <td><button>Add</button></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>meals</td>
+        <td>30 rs</td>
+       <td>
+          <button onclick="decrease(this)">-</button>
+          <span id="quantity">1</span>
+          <button onclick="increase(this)">+</button>
+        </td>
+
+        
+        <td><button>Add</button></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Sandwich</td>
+        <td>25 rs</td>
+       <td>
+          <button onclick="decrease(this)">-</button>
+          <span id="quantity">1</span>
+          <button onclick="increase(this)">+</button>
+        </td>
+
+        
+        <td><button>Add</button></td>
+      </tr>
+<tr>
+        <td>6</td>
+        <td>cutlet</td>
+        <td>25 rs</td>
+       <td>
+          <button onclick="decrease(this)">-</button>
+          <span id="quantity">1</span>
+          <button onclick="increase(this)">+</button>
+        </td>
+
+
+        <td><button>Add</button></td>
+      </tr>
+
+           <tr>
+        <td>7</td>
+        <td>sharjah</td>
+        <td>50 rs</td>
+        <td>
+          <button onclick="decrease(this)">-</button>
+          <span id="quantity">1</span>
+          <button onclick="increase(this)">+</button>
+        </td>
+
+        
+        <td><button>Add</button></td>
+      </tr>
+
+    </table>
+  </div>
+
+  <script>
+    function increase(element) {
+      var quantityElement = element.parentNode.querySelector("#quantity");
+      var quantity = parseInt(quantityElement.textContent);
+      quantity += 1;
+      quantityElement.textContent = quantity;
+    }
+
+    function decrease(element) {
+      var quantityElement = element.parentNode.querySelector("#quantity");
+      var quantity = parseInt(quantityElement.textContent);
+      if (quantity > 1) {
+        quantity -= 1;
+        quantityElement.textContent = quantity;
+      }
+    }
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin home</title>
+    <link rel="stylesheet" href="adminhome.css">
+</head>
+<body>
+    <div class="form">
+        <h1>Dashboard</h1>
+        <button onclick="gotoLink(this)" value="adminfood.html">Food Category</button>
+
+        <button onclick="gotoLink(this)" value="adminsdtudent.html">Menu</button>
+        <button onclick="gotoLink(this)" value="adminfood.html">Users</button>
+        <button onclick="gotoLink(this)" value="adminfood.html">Orders</button>
+
+    </div>
+    <script>
+        function gotoLink(link)
+        {
+console.log(link.value);
+window.open(link.value);
+        }
+        
+    </script>
+</body>
+</html>

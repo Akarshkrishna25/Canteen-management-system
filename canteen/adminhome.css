@@ -1,0 +1,13 @@
+.form button{
+    background-color: rgb(242, 232, 234); 
+     border-radius: 2px;
+     width: 200px;
+     height: 100px;
+     margin-right: 20px;
+}
+.form h1{
+font: size 200%;
+background-color:darkslategray;
+
+
+}

@@ -1,0 +1,62 @@
+body{
+    position: relative;
+    text-align: center;
+    
+}
+
+
+
+<!--.main img{
+    width: 100%;
+    background: linear-gradient(to top,rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%);
+    background-position:top;
+    background-size: cover;
+        height: 109vh;
+}-->
+.form input{
+    width: 800px;
+    height: 35px;
+    background: transparent;
+    border-bottom: 1px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-family:Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 200px;
+    left: 360px;
+  
+
+}
+.bar ul{
+    list-style: none;
+    display: flex;
+    padding-left: 1100px;
+
+    
+}
+.bar ul li Home{
+    padding: 60px;
+    font-size: 20px;
+    position:absolute;
+    top: 30px;
+    padding: 20px;
+    
+}
+.bar ul li a{
+    color:aliceblue;
+}
+.main h1{
+
+position: absolute;
+   font-size: 100px;
+    color: darkgray;
+    top: 8px;
+  left: 400px;
+}
+.form{
+    text-align: center;
+}
+ header white{
+    width: 60px;
+    height: 100px;
+}

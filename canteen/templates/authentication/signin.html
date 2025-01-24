@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://source.unsplash.com/random/1920x1080/?food");
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f7f7f7;
+        }
+
+        .top-bar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .top-bar h1 {
+            margin: 0;
+        }
+
+        .top-bar button {
+            background-color: #555;
+            color: white;
+            padding: 10px 50px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .top-bar button:hover {
+            background-color: #777;
+        }
+
+        .top-bar button.active {
+            background-color: #777;
+        }
+
+        .table-container {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            background-color: rgba(242, 242, 242, 0.9);
+        }
+
+        th {
+            color: black;
+        }
+
+        td:not(:last-child) {
+            padding-right: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .quantity-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+        }
+
+        .quantity-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .quantity-button:hover {
+            background-color: #777;
+        }
+
+        .add-to-cart-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <h1>Campus Kitchen</h1>
+    <button>Home</button>
+    <button class="active">Menu</button>
+    <button onclick="goToCart()">Cart</button>
+    <button>Logout</button>
+</div>
+
+<h2>Menu</h2>
+
+<table id="menuTable">
+    <thead>
+    <tr>
+        <th>SL. No</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in food_items %}
+    <tr>
+        <td>{{ item.sl_no }}</td>
+        <td>{{ item.name }}</td>
+        <td>
+            <div class="quantity-container">
+                <button class="quantity-button" onclick="decrementQuantity(this)">-</button>
+                <input type="number" class="quantity-input" value="{{ item.quantity }}" min="0">
+                <button class="quantity-button" onclick="incrementQuantity(this)">+</button>
+            </div>
+        </td>
+        <td>{{ item.price }}</td>
+        <td><button class="add-to-cart-button" onclick="addToCart('{{ item.name }}', {{ item.price }},{{ item.quantity }})">Add to Cart</button></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    function goToCart() {
+        console.log("Navigating to cart.html...");
+        window.location.href = "cart.html";
+    }
+    
+    function incrementQuantity(button) {
+        var input = button.parentNode.querySelector('.quantity-input');
+        var value = parseInt(input.value, 10);
+        input.value = isNaN(value) ? 0 : value + 1;
+    }
+
+    function decrementQuantity(button) {
+        var input = button.parentNode.querySelector('.quantity-input');
+        var value = parseInt(input.value, 10);
+        input.value = isNaN(value) ? 0 : value - 1;
+    }
+
+    function addToCart(name, price,quantity) {
+        var quantityInput = document.querySelector("input.quantity-input");
+        var quantity = quantityInput ? parseInt(quantityInput.value) : 1; // Default to 1 if quantity input is not found or invalid
+        window.location.href = "cart.html?name=" + encodeURIComponent(name) + "&price=" + encodeURIComponent(price) + "&quantity=" + encodeURIComponent(quantity);
+    }
+    function addItemToCart(name, price, quantity) {
+        var tableBody = document.getElementById("cartTable").getElementsByTagName("tbody")[0];
+        
+        // Create a unique identifier for the row
+        var uniqueId = "cartItem_" + Math.random().toString(36).substr(2, 9);
+        
+        // Create a new row
+        var newRow = tableBody.insertRow(tableBody.rows.length);
+        newRow.id = uniqueId; // Set the id attribute of the row
+        
+        // Insert cells for name, price, and quantity
+        var nameCell = newRow.insertCell(0);
+        var priceCell = newRow.insertCell(1);
+        var quantityCell = newRow.insertCell(2);
+        
+        // Set innerHTML for cells
+        nameCell.innerHTML = name;
+        priceCell.innerHTML = price;
+        quantityCell.innerHTML = quantity;
+    }
+    
+</script>
+
+</body>
+</html>
